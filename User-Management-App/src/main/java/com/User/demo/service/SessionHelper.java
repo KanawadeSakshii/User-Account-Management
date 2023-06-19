@@ -1,0 +1,22 @@
+package com.User.demo.service;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+@Component
+public class SessionHelper {
+
+	public void removeMessageFromSession() {
+		try {
+			
+			HttpSession session=((HttpServletRequest) RequestContextHolder.getRequestAttributes()).getSession();
+		
+			session.removeAttribute("msg");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
