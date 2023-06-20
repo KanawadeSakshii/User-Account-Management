@@ -62,10 +62,8 @@ public class HomeController {
 			              HttpServletRequest request) {
 	
 		String url=request.getRequestURI().toString();//http://localhost:8083/createUser
-
 		url=url.replace(request.getServletPath(),"");	//generate URL
-		
-			
+					
 		//System.out.println(user);
 		boolean f=userService.checkEmail(user.getEmail());
 		
@@ -73,9 +71,8 @@ public class HomeController {
 			session.setAttribute("msg", "Email Id already Exist...!");
 			//System.out.println("Email Id already Exist");
 		}
-		else 
-		{
-		     UserDtls UserDtls=userService.createUser(user,url);
+		else {
+			 UserDtls UserDtls=userService.createUser(user,url);
 		      if(UserDtls!=null) {
 			
 			session.setAttribute("msg", "Registration Sucessfully Done...!!!");
@@ -96,8 +93,8 @@ public class HomeController {
 		}else {
 			return "failed";
 		}
-		
 	}
+	
 	@GetMapping("/loadForgotPassword")
 	public String loadForgotPassword() {
 		return "forgot_password";
