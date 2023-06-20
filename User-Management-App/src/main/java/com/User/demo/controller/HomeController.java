@@ -70,7 +70,7 @@ public class HomeController {
 		boolean f=userService.checkEmail(user.getEmail());
 		
 		if(f) {
-			session.setAttribute("msg", "Email Id already Exist Dude...!");
+			session.setAttribute("msg", "Email Id already Exist...!");
 			//System.out.println("Email Id already Exist");
 		}
 		else 
@@ -78,7 +78,7 @@ public class HomeController {
 		     UserDtls UserDtls=userService.createUser(user,url);
 		      if(UserDtls!=null) {
 			
-			session.setAttribute("msg", "Registration Sucessfully Done Bro...!!!");
+			session.setAttribute("msg", "Registration Sucessfully Done...!!!");
 			//System.out.println("Registration Sucessfully Done Bro...!!!");
 		         }
 	              	else {
