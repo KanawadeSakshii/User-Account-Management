@@ -46,7 +46,7 @@ SimpleGrantedAuthority simpleGrantedAuthority=new SimpleGrantedAuthority(user.ge
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
-		return true;
+		return user.isAccountNonLock();
 	}
 
 	@Override
@@ -58,6 +58,6 @@ SimpleGrantedAuthority simpleGrantedAuthority=new SimpleGrantedAuthority(user.ge
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return true;
+		return user.isEnable();
 	} 
 }

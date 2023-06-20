@@ -15,5 +15,6 @@ public interface UserRepository  extends JpaRepository<UserDtls,Integer>{
     
 	public UserDtls findByEmailAndMobileNumber(String email,String Mob_No);
      //findByEmailAndmobileNumber for reset password
-
+ 
+	public UserDtls findByVerificationCode(String code);
 }

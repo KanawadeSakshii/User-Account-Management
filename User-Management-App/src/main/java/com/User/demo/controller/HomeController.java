@@ -3,6 +3,7 @@ package com.User.demo.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,6 +89,15 @@ public class HomeController {
 		return "redirect:/register";
 	}
 	
+	@GetMapping("/verify")
+	public String verifyAccount(@Param("code") String code) {
+		if(userService.verifyAccount(code)) {
+			return "verify_success";
+		}else {
+			return "failed";
+		}
+		
+	}
 	@GetMapping("/loadForgotPassword")
 	public String loadForgotPassword() {
 		return "forgot_password";

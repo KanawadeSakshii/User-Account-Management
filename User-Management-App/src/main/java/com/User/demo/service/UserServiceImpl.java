@@ -10,6 +10,7 @@ import com.User.demo.model.UserDtls;
 import com.User.demo.repository.UserRepository;
 
 import jakarta.mail.internet.MimeMessage;
+import net.bytebuddy.utility.RandomString;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,6 +28,10 @@ public class UserServiceImpl implements UserService {
 	public UserDtls createUser(UserDtls userDtls,String url) {
 		userDtls.setPassword(passwordEncoder.encode(userDtls.getPassword()));
 		userDtls.setRole("ROLE_USER");
+		
+		userDtls.setEnable(false);
+		RandomString rs=new RandomString();
+		userDtls.setVerificationCode(rs.make(64));
 		
 		UserDtls us = userRepository.save(userDtls);
 		
@@ -59,7 +64,7 @@ public class UserServiceImpl implements UserService {
 			helper.setSubject(subject);
 			
 			content= content.replace("[[name]]", user.getFullName());
-			String siteUrl="http://localhost:8083"+url+"/verify?code="+user.getVerification();
+			String siteUrl="http://localhost:8083"+url+"/verify?code="+user.getVerificationCode();
 			content=content.replace("[[url]]",siteUrl);
 				
 			helper.setText(content,true);
@@ -68,5 +73,21 @@ public class UserServiceImpl implements UserService {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public boolean verifyAccount(String code) {
+		UserDtls user=userRepository.findByVerificationCode(code);
+		if(user!=null) {
+			user.setEnable(true);
+			user.setVerificationCode(null);
+			userRepository.save(user);
+			return true;
+
+		}else {
+			return false;
+
+		}
+		
 	}
 }

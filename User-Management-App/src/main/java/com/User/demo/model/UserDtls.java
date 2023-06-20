@@ -32,16 +32,39 @@ public class UserDtls {
 	
 	private String mobileNumber;
 
-	private String verification;
+	private String verificationCode;
+	
+	private boolean accountNonLock;
+	
+	private boolean enable;
 	
 	
 
-	public String getVerification() {
-		return verification;
+
+	public boolean isEnable() {
+		return enable;
 	}
 
-	public void setVerification(String verification) {
-		this.verification = verification;
+	public void setEnable(boolean enable) {
+		this.enable = enable;
+	}
+
+	public boolean isAccountNonLock() {
+		return accountNonLock;
+	}
+
+	public void setAccountNonLock(boolean accountNonLock) {
+		this.accountNonLock = accountNonLock;
+	}
+
+	
+
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
 	}
 
 	public String getMobileNumber() {
