@@ -1,5 +1,6 @@
 package com.User.demo.model;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,20 +17,21 @@ public class UserDtls {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Nonnull
 	private String fullName;
 
+	@Nonnull
 	private String email;
-
-	private String address;
-
-	private String qualification;
-
+	
+	@Nonnull
 	private String password;
-	
-	private String DoB;
-	
+		
 	private String role;
 	
+	@Nonnull
+	private String ReEnterpassword;
+	
+	@Nonnull
 	private String mobileNumber;
 
 	private String verificationCode;
@@ -38,11 +40,8 @@ public class UserDtls {
 	
 	private boolean enable;
 	
-	
-
-
 	public boolean isEnable() {
-		return enable;
+	return enable;
 	}
 
 	public void setEnable(boolean enable) {
@@ -58,7 +57,6 @@ public class UserDtls {
 	}
 
 	
-
 	public String getVerificationCode() {
 		return verificationCode;
 	}
@@ -107,22 +105,7 @@ public class UserDtls {
 		this.email = email;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getQualification() {
-		return qualification;
-	}
-
-	public void setQualification(String qualification) {
-		this.qualification = qualification;
-	}
-
+	
 	public String getPassword() {
 		return password;
 	}
@@ -131,22 +114,27 @@ public class UserDtls {
 		this.password = password;
 	}
 
-	public String getDoB() {
-		return DoB;
+	
+	public String getReEnterpassword() {
+		return ReEnterpassword;
 	}
 
-	public void setDoB(String doB) {
-		DoB = doB;
+	public void setReEnterpassword(String reEnterpassword) {
+		ReEnterpassword = reEnterpassword;
 	}
 
-	public UserDtls(String fullName, String email, String address, String qualification, String password, String doB) {
+	public UserDtls(String fullName, String email, String password, String role, String reEnterpassword,
+			String mobileNumber, String verificationCode, boolean accountNonLock, boolean enable) {
 		super();
 		this.fullName = fullName;
 		this.email = email;
-		this.address = address;
-		this.qualification = qualification;
 		this.password = password;
-		DoB = doB;
+		this.role = role;
+		ReEnterpassword = reEnterpassword;
+		this.mobileNumber = mobileNumber;
+		this.verificationCode = verificationCode;
+		this.accountNonLock = accountNonLock;
+		this.enable = enable;
 	}
 
 	public UserDtls() {
